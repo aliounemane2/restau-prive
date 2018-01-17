@@ -1,0 +1,75 @@
+page-home {
+
+}
+.toolbar-background-md {
+    border-color: #b2b2b2;
+    background: #ac0203;
+}
+
+.toolbar-title-md {
+    padding: 0 12px;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-alaign: center;
+}
+#contenu-connexion{
+  width:100%;
+  padding:20% 12% 10% 12%;
+}
+.connexion1{
+  *background-image: url(../img/logoconnexion.png);
+  background-repeat:no-repeat;
+  width:100%;
+  margin-top: 10%;
+}
+.connexion{
+	background-image: url(http://www.grillcroute.com/uploads/plats/id149/_DSC6667_big.jpg);
+	background-repeat:no-repeat;
+	
+}
+.publier-annonce{
+	background-color: #ac0203;
+	margin-top: 5%;
+	padding-left: 10%;
+    padding-right: 10%;
+	color: #ffffff;
+	height: 50px;
+	padding-top: 4%;
+	font-size: 20px;
+	border-radius: 15px;
+}
+
+.decouvrir-restau{
+	background-color: #ffffff ;
+	margin-top: 10%;
+	padding-left: 10%;
+    padding-right: 10%;
+	color: #ac0203;
+	height: 50px;
+	padding-top: 4%;
+	font-size: 20px;
+	border-radius: 15px;
+}
+.se-connecter{
+	float: left;	
+}
+.sinscrire{
+	float: right;	
+}
+#contenu-connexion span{
+	float: left;
+	margin-top: 5%;
+	color:#ffffff;
+	font-size: 16px;
+	margin-left: 2%;
+}
+#contenu-connexion u{
+	float: right;
+	margin-top: 5%;
+	color:#ffffff;
+	font-size: 16px;
+	margin-right: 9%;
+	text-decoration:none;
+}
+

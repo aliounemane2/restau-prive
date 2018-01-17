@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "777537812079",
+    "firebase_url": "https://restau-prive-671b2.firebaseio.com",
+    "project_id": "restau-prive-671b2",
+    "storage_bucket": "restau-prive-671b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777537812079:android:2344b302e450d9f1",
+        "android_client_info": {
+          "package_name": "com.restauprive.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "777537812079-l89e86t5dml71blv3jfo8u2daq0l11rh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfbpXFGUh0OhY2Sm8igBxWU_57jM5Hkl0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

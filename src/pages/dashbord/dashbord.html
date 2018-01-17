@@ -1,0 +1,77 @@
+<!--
+  Generated template for the DashbordPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Tableau de bord</ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<div  class="banaieredashbord">
+		<div class="point-user">{{nbPoints}} points</div>
+		<div class="image-user">
+			<ion-avatar item-start>
+              <img *ngIf ="imageProfil == null" src="https://static.wixstatic.com/media/76bd3b_dc0fce5225ae4b2183fc88bfa825cf6e~mv2.png_srz_248_248_85_22_0.50_1.20_0.00_png_srz" />
+
+              <img  *ngIf ="imageProfil != null" src="https://127.0.0.1/restau-prive/web/uploads/{{imageProfil}}" />
+            </ion-avatar>
+            {{prenom}} {{nom}}
+        </div>
+		<div class="avis-user"> {{nbAvis}} avis</div>
+	</div>
+	<div class ="mon-niveau">
+		<div class="texte-niveau"> Mon niveau</div>
+		<div class="debutant">
+			<div *ngIf ="nbPoints > 50" class="grade"></div>
+			<div *ngIf ="nbPoints <= 50" class="grade-debutant"></div>
+			<div class="ligne-grade"></div>
+
+			<div *ngIf ="nbPoints <= 0 && nbPoints <=250" class="grade"></div>
+			<div *ngIf ="nbPoints > 50 && nbPoints <=250" class="grade-cuistot"></div>	
+			<div class="ligne-grade"></div>
+
+			<div *ngIf ="nbPoints <= 0 && nbPoints <=1000" class="grade"></div>
+			<div *ngIf ="nbPoints > 250 && nbPoints <=1000" class="grade-chef-cuisinier"></div>
+			<div class="ligne-grade"></div>
+
+			<div *ngIf ="nbPoints <= 0 && nbPoints <=1000" class="grade"></div>
+			<div *ngIf =" nbPoints >=1000" class="grade-cordon-bleu"></div>
+			
+		</div>
+	</div>
+	<div class="stat-annonce">
+		<div class="annonce">
+			<ion-icon ios="ios-restaurant" md="md-restaurant"></ion-icon><br/>
+			<span>{{nbAnnonces}}</span>
+			<p *ngIf ="nbAnnonces > 1">Annonces</p>
+			<p *ngIf ="nbAnnonces <= 1">Annonce</p>
+		</div>
+		<div class="annonce-notee">
+			<ion-icon name="happy"></ion-icon><br/>
+			<span>{{nbAnnoncesNotees}}</span><br/><br/>
+			<span *ngIf ="nbAnnoncesNotees > 1">Annonces notees</span>
+			<span *ngIf ="nbAnnoncesNotees <= 1">Annonce notee</span>
+		</div>
+		<div class="annonce-annule">
+			<p>{{nbAnnoncesAnnulees}}</p>
+			<p *ngIf ="nbAnnoncesAnnulees > 1">Annonces annulees</p>
+			<p *ngIf ="nbAnnoncesAnnulees <= 1">Annonce annulee</p>
+		</div>
+		<div class="reservation">
+			<ion-icon name="person-add"></ion-icon><br/>
+			<span>{{nbReservations}}</span><br/><br/>
+			<span *ngIf ="nbReservations > 1">reservations</span>
+			<span *ngIf ="nbReservations <= 1">reservation</span>
+		</div>
+	</div>	
+</ion-content>

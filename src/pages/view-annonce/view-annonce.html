@@ -1,0 +1,115 @@
+<!--
+  Generated template for the ViewAnnoncePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title> Restau prive</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+	<div class="banierehopi">
+      <a class="item-image" ng-class=""  >
+
+        <img src="{{link}}{{annonce.image_profil.chemin}}"  class="full-image"/> 
+      </a>
+  </div>
+
+  <div class="details-hopital">
+      
+       <div class="cadre-details">{{annonce.name}}</div>
+
+       <div class="cadre-details" *ngIf ="annonce.type =='simple'" >pour {{annonce.nb_convives_min}} à {{annonce.nb_convives_max}} personnes</div>
+
+       <div class="cadre-details" *ngIf ="annonce.type =='simple'" >{{annonce.places_restantes}} places restances</div>
+
+       <div class="cadre-details" *ngIf ="annonce.type =='emporter'" >Plat a emporter</div>
+       <div class="cadre-details" *ngIf ="annonce.type =='permanente'"> Disponibilite permanente</div>
+
+       <div class="cadre-details" *ngIf ="annonce.type =='simple'" >{{annonce.date | date:'dd/MM/yyyy'}} entre {{ annonce.heure_deb }} et {{ annonce.heure_fin }} </div>
+
+       <div class="cadre-details"> {{annonce.adresse}}</div>
+
+       <div class="cadre-details"> {{annonce.prix}} euros / personne</div>
+
+       <div class="cadre-details"> {{annonce.details}}</div>
+
+      <span *ngIf ="parent =='liste-annonce'"  
+      style=
+            "padding-top: 4%;
+            padding-bottom: 4%;
+            padding-left: 2%;
+            padding-right: 2%;
+            color: #fff;
+            background-color:#ac0203;
+            float: left;
+            margin-top: 10px;
+            margin-bottom: 15px;"  
+            (click)="goToMenureservation()" >Reserver
+      </span>
+
+      <button *ngIf ="parent =='my-annonce'"  class="btnpublier"  (click)="annulerAnnonce()" >Anuler</button>
+      <div *ngIf ="parent =='liste-annonce'" style="margin-bottom:10px;">
+        <div *ngIf ="token != null">
+          <span style="padding-top: 4%;
+            padding-bottom: 4%;
+            padding-left: 2%;
+            padding-right: 2%;
+            color: #fff;
+            background-color:#ac0203;
+            float: left;
+            margin-left: 15px;"
+
+            (click)="AfficherChampCommentaire()">Laisser un commentaire
+           </span>
+            <form  [formGroup]="myFormulaire" style="margin-top:10px;" >
+              <ion-item [hidden]="!value" style="margin-left: -15px;">
+                <ion-label floating class="labelins">Ajouter un commentaire</ion-label>
+                <ion-textarea formControlName="body" class="champavis"></ion-textarea>
+              </ion-item>
+              <button [hidden]="!value" style="padding-top: 4%;
+                  padding-bottom: 4%;
+                  padding-left: 2%;
+                  padding-right: 2%;
+                  color: #fff;
+                  background-color:#ac0203;
+                  margin-top:10px;"  
+                  (click)="commentaireAnnonce()">Poster
+              </button>
+
+            </form>
+
+            <ion-card *ngFor="let comment of comment" style="margin-top:10px;">
+              <ion-card-header>
+              {{comment.comment.author.prenom}} {{comment.comment.author.nom}} le {{comment.comment.created_at | date:'dd/MM/yyyy'}}
+              </ion-card-header>
+              <ion-card-content>
+                {{comment.comment.body}}
+                <ion-icon name="redo" (click)="showPrompt(comment.comment.id)"></ion-icon>
+              </ion-card-content>
+              <div *ngFor="let children of comment.children" style="margin-left: 20px;">
+                <ion-card-header>
+                {{children.comment.author.prenom}} {{children.comment.author.nom}} le{{children.comment.created_at | date:'dd/MM/yyyy'}}
+                </ion-card-header>
+                <ion-card-content>
+                  {{children.comment.body}}
+                </ion-card-content>
+              </div>
+              
+            </ion-card>
+        </div>
+        
+
+      </div>
+
+      
+  </div>
+
+</ion-content>

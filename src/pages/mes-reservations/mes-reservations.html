@@ -1,0 +1,171 @@
+<!--
+  Generated template for the MesReservationsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mes reservations</ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <div *ngIf ="menu =='Reservations à venir'">
+    <h3 style="color: #ac0203; margin-left: 10px;">Reservations à venir </h3>
+    <ion-card *ngFor="let reservation of reservations" (click)="itemTapped($event,reservation,menu)">
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="{{link}}{{reservation.annonce.image_profil.chemin}}" />
+            </ion-avatar>
+            <h2>{{reservation.annonce.name}}</h2>
+             <div class="line"></div>
+            <p *ngIf ="reservation.annonce.type =='simple'">  Le {{reservation.annonce.date | date:'dd/MM/yyyy'}} a {{reservation.annonce.adresse}} </p>
+
+            <p *ngIf ="reservation.annonce.type =='emporter'"> Plat est a emporter</p>
+            <p *ngIf ="reservation.annonce.type =='permanente'"> Disponinilite permanente </p>
+          </ion-item>
+    </ion-card>
+  </div>
+
+  <div *ngIf ="menu =='Reservations passées'">
+    <h3 style="color: #ac0203; margin-left: 10px;">Reservations passées </h3>
+    <ion-card *ngFor="let reservation of reservations" (click)="itemTapped($event,reservation,menu)">
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="{{link}}{{reservation.annonce.image_profil.chemin}}" />
+            </ion-avatar>
+            <h2>{{reservation.annonce.name}}</h2>
+             <div class="line"></div>
+            <span *ngIf ="reservation.annonce.type =='simple'">  Le {{reservation.annonce.date | date:'dd/MM/yyyy'}} a {{reservation.annonce.adresse}} </span>
+
+            <span *ngIf ="reservation.annonce.type =='emporter'"> Plat est a emporter</span>
+            <span *ngIf ="reservation.annonce.type =='permanente'"> Disponinilite permanente </span>
+
+            <span > Prix : {{reservation.annonce.prix}}/pers</span>
+
+            <span *ngIf ="reservation.annonce.nb_reservations == 1"> {{reservation.annonce.nb_reservations}} participant</span>
+            <span *ngIf ="reservation.annonce.nb_reservations > 1">  {{reservation.annonce.nb_reservations}} participants </span>
+
+            <button  class="btndetailsres" >Avis</button>
+          </ion-item>
+    </ion-card>
+  </div>
+
+  <div *ngIf ="menu =='Reservations annulées'">
+    <h3 style="color: #ac0203; margin-left: 10px;">Reservations annulées </h3>
+    <ion-card *ngFor="let reservation of reservations" (click)="itemTapped($event,reservation,menu)">
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="{{link}}{{reservation.annonce.image_profil.chemin}}" />
+            </ion-avatar>
+            <h2>{{reservation.annonce.name}}</h2>
+             <div class="line"></div>
+            <p *ngIf ="reservation.annonce.type =='simple'">  Le {{reservation.annonce.date | date:'dd/MM/yyyy'}} a {{reservation.annonce.adresse}} </p>
+
+            <p *ngIf ="reservation.annonce.type =='emporter'"> Plat est a emporter</p>
+            <p *ngIf ="reservation.annonce.type =='permanente'"> Disponinilite permanente </p>
+          </ion-item>
+    </ion-card>
+  </div>
+
+
+
+<!--div class="info infos-list"  style="margin-top: 10px;"  *ngIf ="menu !='Reservations à venir'">
+        <div class="animate-repeat1" *ngFor="let reservation of reservations" (click)="itemTapped($event,reservation,menu)">
+          
+            <div class="row-hopital">
+              <div class="col-34">
+
+                  <img src="https://127.0.0.1/restau-prive/web/{{reservation.annonce.image_profil.chemin}}"  class="full-image"/> 
+
+              </div>
+
+              <div class="col-12" style="padding:0 7px; margin:0">
+
+                <div class="item-text-wrap">
+                  <h4 class="texte-titre-hopi">{{reservation.annonce.titre}} </h4>
+                 
+                    <b *ngIf ="reservation.annonce.type =='simple'" >Prévu le {{ reservation.annonce.date }}entre {{ reservation.annonce.heure_deb }} et {{ reservation.annonce.heure_fin }} a {{reservation.annonce.adresse}} </b>
+
+                    <b *ngIf ="reservation.annonce.type =='permanente'"  >Disponible à {{reservation.annonce.adresse}} </b>
+
+                    <b *ngIf ="reservation.annonce.type =='emporter'" >Plat a emporter depuis {{reservation.annonce.adresse}}</b>
+                    <br/>
+
+                </div>
+                <button class="btnres" *ngIf ="reservation.annonce.paiement !=null" (click)="goToNewPaiement(reservation)" >Payer
+                </button>
+              </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="info infos-list"  style="margin-top: 10px;"  *ngIf ="menu !='Reservations passées'">
+        <div class="animate-repeat1" *ngFor="let reservation of reservations" (click)="itemTapped($event,reservation,menu)">
+          
+            <div class="row-hopital">
+              <div class="col-34">
+
+                  <img src="https://127.0.0.1/restau-prive/web/{{reservation.annonce.image_profil.chemin}}"  class="full-image"/> 
+
+              </div>
+
+              <div class="col-12" style="padding:0 7px; margin:0">
+
+                <div class="item-text-wrap">
+                  <h4 class="texte-titre-hopi">{{reservation.annonce.titre}} </h4>
+                 
+                    <b *ngIf ="reservation.annonce.type =='simple'" >Prévu le {{ reservation.annonce.date }}entre {{ reservation.annonce.heure_deb }} et {{ reservation.annonce.heure_fin }} a {{reservation.annonce.adresse}} </b>
+
+                    <b *ngIf ="reservation.annonce.type =='permanente'"  >Disponible à {{reservation.annonce.adresse}} </b>
+
+                    <b *ngIf ="reservation.annonce.type =='emporter'" >Plat a emporter depuis {{reservation.annonce.adresse}}</b>
+                    <br/>
+
+                </div>
+              </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="info infos-list"  style="margin-top: 10px;"  *ngIf ="menu !='Reservations annulées'">
+        <div class="animate-repeat1" *ngFor="let reservation of reservations" (click)="itemTapped($event,reservation,menu)">
+          
+            <div class="row-hopital">
+              <div class="col-34">
+
+                  <img src="https://127.0.0.1/restau-prive/web/{{reservation.annonce.image_profil.chemin}}"  class="full-image"/> 
+
+              </div>
+
+              <div class="col-12" style="padding:0 7px; margin:0">
+
+                <div class="item-text-wrap">
+                  <h4 class="texte-titre-hopi">{{reservation.annonce.titre}} </h4>
+                 
+                    <b *ngIf ="reservation.annonce.type =='simple'" >Prévu le {{ reservation.annonce.date }}entre {{ reservation.annonce.heure_deb }} et {{ reservation.annonce.heure_fin }} a {{reservation.annonce.adresse}} </b>
+
+                    <b *ngIf ="reservation.annonce.type =='permanente'"  >Disponible à {{reservation.annonce.adresse}} </b>
+
+                    <b *ngIf ="reservation.annonce.type =='emporter'" >Plat a emporter depuis {{reservation.annonce.adresse}}</b>
+                    <br/>
+
+                </div>
+              </div>
+            </div>
+
+        </div>
+    </div-->
+	
+</ion-content>

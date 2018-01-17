@@ -1,0 +1,96 @@
+page-view-annonce {
+.cadre-details{
+    width: 100%;
+    height: 50px;
+    padding-left: 5px;
+    padding-top: 10px;
+    margin-right: 10%;
+    margin-top: 3%;
+    border: 1px solid #cccccc;
+  }
+
+}
+.banierehopi{
+  width: 100%;
+  *height: 125px;
+  *margin-left: 5px;
+  margin-right: 5px;
+  *padding: 10px;
+  *max-height:100%;
+  float: none;
+  overflow: hidden;
+  box-shadow: 1px 1px 6px #555;
+}
+.banierehopi .item-image {
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  max-height: 100px;
+  width: 100%;
+  height: 100%;
+}
+
+.details-hopital{
+  width: 96%;
+  margin-top: 9%;
+  margin-left:4%;
+  padding-right:4%;
+  line-height: 23px;
+}
+
+.texte-det-four-dr{
+  color:#000000;
+  font-size: 18px;
+font-weight: normal;
+}
+.reserver{
+  background-color: #ac0203;
+  margin-top: 5%;
+  *width: 60%;
+  padding-left: 15%;
+  padding-right: 10%;
+  color: #ffffff;
+  height: 50px;
+  padding-top: 4%;
+  font-size: 20px;
+  border-radius: 15px;
+}
+
+
+
+.champavis{
+    border: solid 1px #ccc;
+    padding: 5px 10px;
+    background-color: #ffffff;   
+}
+
+.btnpublieravis{
+    background-color: #ac0203;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 30%;
+    padding-left: 10%;
+    *padding-right: 10%;
+    color: #ffffff;
+    height: 50px;
+    width: 30%;
+    
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+.btnpublier{
+    background-color: #ac0203;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 30%;
+    *padding-left: 10%;
+    *padding-right: 10%;
+    color: #ffffff;
+    height: 50px;
+    
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+

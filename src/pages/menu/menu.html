@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{titre}}</ion-title>
+    <!--button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button-->
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <div class="banierehopi">
+      <a class="item-image" >
+
+        <img *ngIf ="annonce" src="{{link}}{{annonce.image_profil.chemin}}"  class="full-image"/> 
+
+        <img *ngIf ="reservation" src="{{link}}{{reservation.annonce.image_profil.chemin}}"  class="full-image"/> 
+      </a>
+  </div>
+  <form [formGroup]="myFormulaire">
+
+    <ion-item *ngIf ="parent =='viewannonce'">
+        <ion-label>Nombre de convives</ion-label>
+        <ion-select formControlName="nbcon" >
+          <ion-option *ngFor="let nbconv of nbConvives" value="{{nbconv}}">{{nbconv}}</ion-option>
+        </ion-select>
+     </ion-item>
+
+     <ion-item *ngIf ="parent =='detailsreservation'">
+        <ion-label>Nombre de convives</ion-label>
+        <ion-select formControlName="nbcon" >
+          <ion-option *ngFor="let nbconv of nbConvives" value="{{nbconv}}">{{nbconv}}</ion-option>
+        </ion-select>
+     </ion-item>
+
+    <button class="btnres" *ngIf ="parent =='viewannonce'" (click)="addReservation()">Valider</button>
+    <button class="btnres" *ngIf ="parent =='detailsreservation'" (click)="modifierReservation()">Valider</button>
+
+  </form>
+</ion-content>

@@ -1,0 +1,57 @@
+page-paiement {
+ion-card {
+    position: relative;
+    text-align: center;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 20%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    *position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #000;
+    font-size: 14px;
+  }
+
+  .btndebloque{
+    background-color: #ac0203;
+    margin-top: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+    color: #ffffff;
+    float: left;
+    height: 50px;
+    padding-top: 4%;
+    font-size: 16px;
+    border-radius: 15px;
+    margin-bottom: 2%;
+    margin-left: 3%;
+   }
+   .item-md ion-avatar img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+  }
+
+  .line{
+    border-top: 2px;
+    width: auto;
+    border-color: #ac0203;
+    height: 2px;
+    background-color: #ac0203; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+}

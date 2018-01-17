@@ -1,0 +1,19 @@
+page-mes-annonces {
+	.item-md ion-avatar img {
+	    width: 90px;
+	    height: 90px;
+	    border-radius: 50%;
+	    overflow: hidden;
+	}
+
+	.line{
+    border-top: 2px;
+    width: auto;
+    border-color: #ac0203;
+    height: 2px;
+    background-color: #ac0203; 
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+}

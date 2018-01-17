@@ -1,0 +1,46 @@
+<!--
+  Generated template for the CodeValidatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>CodeValidate</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<!--div  class="banaieredashbord">
+	    <div class="point-user"></div>
+	    <div class="image-user">
+	      <ion-avatar item-start>
+	              <img *ngIf ="imageProfil == null" src="https://127.0.0.1/restau-prive/web/images/user.jpg" />
+
+	              <img  *ngIf ="imageProfil != null" src="https://127.0.0.1/restau-prive/web/uploads/{{imageProfil}}" />
+
+	      </ion-avatar>
+	    </div>
+	    <div class="avis-user"> </div>
+  	</div-->
+
+  	<div style="width: 100%;height: auto; margin-top: 5%">
+
+	    <form [formGroup]="myFormulaire">
+
+	      <ion-item>
+	        <ion-label floating class="labelins">Code de validation</ion-label>
+	        <ion-input formControlName="code" type="text" class="champannonce" ></ion-input>
+	      </ion-item>
+	  
+	      <button class="btnpublier" (click) = "validatePhoneNumer()" >Valider</button>
+	      <button class="btnpublier" (click) = "renvoyerCode()" >Renvoyer le code</button>
+
+	    </form>
+
+  	</div>
+
+</ion-content>

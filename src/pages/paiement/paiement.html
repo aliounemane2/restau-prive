@@ -1,0 +1,141 @@
+<!--
+  Generated template for the PaiementPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mes paiements</ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  class="card-background-page">
+<!--div class="info infos-list"  style="margin-top: 10px;" >
+        <div class="animate-repeat1" *ngFor="let annonce of annonces"  >
+          
+            <div class="row-hopital">
+              <div class="col-34">
+
+                  <img src="https://127.0.0.1/restau-prive/web/{{annonce.image_profil.chemin}}"  class="full-image"/> 
+
+              </div>
+
+              <div class="col-12" style="padding:0 7px; margin:0">
+
+                <div class="item-text-wrap">
+                  <h4 class="texte-titre-hopi">{{annonce.titre}} </h4>
+                 
+                    <b *ngIf ="annonce.type =='simple'" >Prévu le {{ annonce.date }}entre {{ annonce.heure_deb }} et {{ annonce.heure_fin }} a {{annonce.adresse}} </b>
+
+                    <b *ngIf ="annonce.type =='permanente'"  >Disponible à {{annonce.adresse}} </b>
+
+                    <b *ngIf ="annonce.type =='emporter'" >Plat a emporter depuis {{annonce.adresse}}</b>
+
+                    <ion-grid>
+					  <ion-row>
+					    <ion-col>
+					    Prix:  {{annonce.prix}} €/pers  Total:  {{annonce.prix}}
+						</ion-col>
+					  </ion-row>
+					</ion-grid>
+                    <br/>
+
+                </div>
+                <button class="btnres" *ngIf ="annonce.paiement !=null" (click)="goToDeblocagePaiement(annonce)" >Debloquer</button>
+              </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf ="menu =='Paiements encaissés'">
+      <ion-card *ngFor="let annonce of annonces">
+        <img src="https://127.0.0.1/restau-prive/web/{{annonce.image_profil.chemin}}"/>
+        <div class="card-title">{{annonce.titre}}</div>
+        <div class="card-subtitle" *ngIf ="annonce.type =='simple'" >
+          Prévu le {{ annonce.date }}entre 
+          {{ annonce.heure_deb }} et {{ annonce.heure_fin }} a {{annonce.adresse}}
+        </div>
+
+        <div class="card-subtitle" *ngIf ="annonce.type =='permanente'" >
+          Disponible à {{annonce.adresse}}
+        </div>
+
+        <div class="card-subtitle" *ngIf ="annonce.type =='emporter'" >
+          Plat a emporter depuis {{annonce.adresse}}
+        </div>
+
+        <div class="card-subtitle">
+           Prix:  {{annonce.prix}} €/pers  Total:  {{annonce.prix}}
+        </div>
+
+        <button class="btndebloque" (click)="goToDeblocagePaiement(annonce)" >Debloquer
+        </button>
+      </ion-card>
+    </div>
+
+
+    <div *ngIf ="menu =='Paiements Effectués'">
+      <ion-card *ngFor="let reservation of reservations">
+        <img src="https://127.0.0.1/restau-prive/web/{{reservation.annonce.image_profil.chemin}}"/>
+        <div class="card-title">{{reservation.annonce.titre}}</div>
+        <div class="card-subtitle" *ngIf ="reservation.annonce.type =='simple'" >
+          Prévu le {{ reservation.annonce.date }}entre 
+          {{ reservation.annonce.heure_deb }} et {{ reservation.annonce.heure_fin }} a {{reservation.annonce.adresse}}
+        </div>
+
+        <div class="card-subtitle" *ngIf ="reservation.annonce.type =='permanente'" >
+          Disponible à {{reservation.annonce.adresse}}
+        </div>
+
+        <div class="card-subtitle" *ngIf ="reservation.annonce.type =='emporter'" >
+          Plat a emporter depuis {{reservation.annonce.adresse}}
+        </div>
+
+        <div class="card-subtitle">
+           Prix:  {{reservation.annonce.prix}} €/pers  Total:  {{reservation.annonce.prix}}
+        </div>
+
+      </ion-card>
+    </div-->
+
+
+
+    <div *ngIf ="menu =='Paiements encaissés'">
+      <h3 style="color: #ac0203; margin-left: 10px;">Paiements encaissés </h3>
+    <ion-card *ngFor="let annonce of annonces">
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="{{link}}{{annonce.image_profil.chemin}}" />
+            </ion-avatar>
+            <h2>{{annonce.name}}</h2>
+             <div class="line"></div>
+            <p > Prix:  {{annonce.prix}} €/pers - Total:  {{annonce.prix}} </p>
+          </ion-item>
+
+          <button class="btndebloque" (click)="goToDeblocagePaiement(annonce)" >Debloquer
+        </button>
+    </ion-card>
+  </div>
+
+  <div *ngIf ="menu =='Paiements Effectués'">
+    <h3 style="color: #ac0203; margin-left: 10px;">Paiements Effectués </h3>
+    <ion-card *ngFor="let reservation of reservations">
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="{{link}}{{reservation.annonce.image_profil.chemin}}" />
+            </ion-avatar>
+            <h2>{{reservation.annonce.name}}</h2>
+             <div class="line"></div>
+            <p > Prix:  {{reservation.annonce.prix}} €/pers - Total:  {{reservation.annonce.prix}} </p>
+          </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,80 @@
+<!--
+  Generated template for the NotificationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Datails notification</ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <!--h6>{{pushMessage}}</h6-->
+  <div *ngFor="let notification of notifications">
+    <ion-card  *ngIf ="notification.type_notif =='new_reservation'" (click)="itemTapped($event, notification)">
+      <ion-card-content>
+        {{notification.from_user.email}} a reservé  {{ notification.reservation.nb_convives}} places pour votre plat {{notification.annonce.name}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card  *ngIf ="notification.type_notif =='validation_reservation'" >
+      <ion-card-content>
+        {{notification.from_user.email}} a validé votre reservation de {{ notification.reservation.nb_convives}} places pour son plat  {{notification.annonce.name}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card  *ngIf ="notification.type_notif =='refus_reservation'" >
+      <ion-card-content>
+        {{notification.from_user.email}} a refusé votre reservation de {{ notification.reservation.nb_convives}} places pour son plat  {{notification.annonce.name}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card  *ngIf ="notification.type_notif =='cancel_annonce'" >
+      <ion-card-content>
+        {{notification.from_user.email}} a annulé son plat   {{notification.annonce.name}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card  *ngIf ="notification.type_notif =='cancel_reservation'" >
+      <ion-card-content>
+        {{notification.from_user.email}} a annulé sa reservation de {{ notification.reservation.nb_convives}} places pour votre plat   {{notification.annonce.name}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card  *ngIf ="notification.type_notif =='new_avis_annonce'" >
+      <ion-card-content>
+        {{notification.from_user.email}} a noté votre plat {{notification.annonce.name}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card  *ngIf ="notification.type_notif =='new_comment_annonce'">
+      <ion-card-content>
+        {{notification.from_user.email}} a commenté votre plat {{notification.annonce.name}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card  *ngIf ="notification.type_notif =='reply_comment_annonce'" >
+      <ion-card-content>
+        {{notification.from_user.email}} a répondu à votre commentaire sur le plat {{notification.annonce.name}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card  *ngIf ="notification.type_notif =='update_reservation'" (click)="itemTapped($event, notification)">
+      <ion-card-content>
+        {{notification.reservation.user.username}} a modifié sa reservation pour votre plat {{notification.annonce.name}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+
+</ion-content>

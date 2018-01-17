@@ -1,0 +1,70 @@
+<!--
+  Generated template for the FormAvisPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Avis</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+<form [formGroup]="myFormulaire">
+	<ion-item>
+		<ion-label floating class="labelins">Cuisine</ion-label>
+	      <ion-select formControlName="cuisine"  class="champannonce">
+	        <ion-option  value="1">1</ion-option>
+	        <ion-option  value="2">2</ion-option>
+	        <ion-option  value="3">3</ion-option>
+	        <ion-option  value="4">4</ion-option>
+	        <ion-option  value="5">5</ion-option>
+	    </ion-select>
+	</ion-item>
+
+	<ion-item>
+		<ion-label floating class="labelins">Ambiance</ion-label>
+	      <ion-select formControlName="ambiance"  class="champannonce">
+	        <ion-option  value="1">1</ion-option>
+	        <ion-option  value="2">2</ion-option>
+	        <ion-option  value="3">3</ion-option>
+	        <ion-option  value="4">4</ion-option>
+	        <ion-option  value="5">5</ion-option>
+	    </ion-select>
+	</ion-item>
+
+	<ion-item>
+		<ion-label floating class="labelins">Conviviabilite</ion-label>
+	      <ion-select formControlName="conviviabilite"  class="champannonce">
+	        <ion-option  value="1">1</ion-option>
+	        <ion-option  value="2">2</ion-option>
+	        <ion-option  value="3">3</ion-option>
+	        <ion-option  value="4">4</ion-option>
+	        <ion-option  value="5">5</ion-option>
+	    </ion-select>
+	</ion-item>
+
+	<ion-item>
+		<ion-label floating class="labelins">Rapport qualite / prix</ion-label>
+	      <ion-select formControlName="prix"  class="champannonce">
+	        <ion-option  value="1">1</ion-option>
+	        <ion-option  value="2">2</ion-option>
+	        <ion-option  value="3">3</ion-option>
+	        <ion-option  value="4">4</ion-option>
+	        <ion-option  value="5">5</ion-option>
+	    </ion-select>
+	</ion-item>
+
+	<ion-item>
+		<ion-label floating class="labelins">Donnez votre avis</ion-label>
+		<ion-textarea formControlName="avis" class="champavis"></ion-textarea>
+	</ion-item>
+
+	<button class="btnpublieravis"  (click)="newAvis()">Poster</button>
+
+	</form>
+</ion-content>

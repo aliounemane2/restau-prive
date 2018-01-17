@@ -1,0 +1,147 @@
+<!--
+  Generated template for the DeposerUneannoncePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Restau privé</ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+<div class="photoannonce" (click)="takeThePhoto()"><ion-icon name="camera" class="icone-photo"></ion-icon>
+  <img *ngIf ="base64Image == null" src="assets/images/profil_image.jpg" class="full-image" />
+
+  <img *ngIf ="base64Image != null" src="{{base64Image}}" class="full-image" />
+
+</div>
+<div style="width: 100%;height: auto; margin-top: 5%">
+    <p *ngIf="submitAttempt" style="color: #ea6153; text-align: center"  >Veuillez remplir tous les champs avec des informations valides.</p>
+
+    <form [formGroup]="myFormulaire">
+
+      <ion-item>
+
+      <ion-label floating class="labelins">Type d'annonce</ion-label>
+      <ion-select formControlName="typeannonce"  class="champannonce" (ionChange)="masquerChamp()">
+        <ion-option  value="simple" class="selectannonce">Simple</ion-option>
+        <ion-option  value="emporter" class="selectannonce">A emporter</ion-option>
+        <ion-option  value="permanente" class="selectannonce">Disponibilte permanente</ion-option>
+      </ion-select>
+        <!--ion-label floating class="labelins">Type de cuisine</ion-label>
+        <ion-input formControlName="typecuisine" type="text" class="champins"></ion-input-->
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating class="labelins"><ion-icon name="ios-restaurant"></ion-icon> &nbsp; &nbsp;Nom du plat</ion-label>
+        <ion-input formControlName="nomplat" type="text" class="champannonce"></ion-input>
+      </ion-item>
+
+      <ion-item [hidden]="value">
+        <ion-label floating class="labelins"> <ion-icon name="time"></ion-icon> &nbsp; &nbsp;Date</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MMM-DD" formControlName="myDate" class="champannonce" id ="myDate"></ion-datetime>
+      </ion-item>
+
+      <ion-item [hidden]="value" style="width: 50%; float:left;">
+        <ion-label floating class="labelins"><ion-icon name="time"></ion-icon> &nbsp; &nbsp;Heure de debut</ion-label>
+        <ion-datetime class="champannonce-heure"  displayFormat="HH-mm" pickerFormat="HH-mm" formControlName="heuredebut" type="text" ></ion-datetime>
+      </ion-item>
+
+      <ion-item [hidden]="value" style="width: 50%; float:left;">
+        <ion-label floating class="labelins"><ion-icon name="time"></ion-icon> &nbsp; &nbsp;Heure de fin</ion-label>
+        <ion-datetime displayFormat="HH-mm" pickerFormat="HH-mm" formControlName="heurefin" type="tel" class="champannonce-heure"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating class="labelins"><ion-icon name="pin"></ion-icon> &nbsp; &nbsp;Lieu</ion-label>
+        <ion-input formControlName="lieu" type="text" class="champannonce" id="lieu" (click)="showAddressModal()"></ion-input>
+      </ion-item>
+
+      <ion-item [hidden]="value" style="width: 50%; float:left;">
+        <ion-label floating class="labelins"> <ion-icon name="people"></ion-icon> &nbsp; &nbsp;Nombre de convives Min</ion-label>
+        <ion-input formControlName="nbconvivesmin" type="number" class="champannonce"></ion-input>
+      </ion-item>
+
+      <ion-item [hidden]="value" style="width: 50%; float:left;">
+        <ion-label floating class="labelins"><ion-icon name="people"></ion-icon> &nbsp; &nbsp; Nombre de convives Max</ion-label>
+        <ion-input formControlName="nbconvivesmax" type="number" class="champannonce"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating class="labelins"><ion-icon name="logo-euro"></ion-icon> &nbsp;&nbsp;   Prix par personne en euro</ion-label>
+        <ion-input formControlName="prix" type="number" class="champannonce"></ion-input>
+      </ion-item>
+
+      <ion-item [hidden]="!val">
+        <ion-label floating class="labelins"><ion-icon name="camera"></ion-icon> &nbsp; &nbsp;Photo de couverture</ion-label>
+        <ion-input  formControlName="photocouv" type="text" class="champannonce"></ion-input>
+      </ion-item>
+
+      <ion-item [hidden]="!val">
+        <ion-label floating class="labelins"><ion-icon name="camera"></ion-icon> &nbsp; &nbsp;Autre photo de couverture</ion-label>
+        <ion-input  formControlName="autrephoto" type="text" class="champannonce"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating class="labelins">Details</ion-label>
+        <ion-input formControlName="details" type="text" class="champannonce"></ion-input>
+      </ion-item>
+
+      <ion-item>
+
+      <ion-label floating class="labelins">Categorie cuisine</ion-label>
+      <ion-select formControlName="typecuisine"  class="champannonce">
+        <ion-option *ngFor="let catCuisine of catCuisine" value="{{catCuisine.id}}">{{catCuisine.categorie}}</ion-option>
+      </ion-select>
+        <!--ion-label floating class="labelins">Type de cuisine</ion-label>
+        <ion-input formControlName="typecuisine" type="text" class="champins"></ion-input-->
+      </ion-item>
+  
+      <button class="btnpublier"  (click)="newAnnonce()">Publiez une annonce</button>
+
+    </form>
+
+    <!--div (click)="getPicture()">choisir une photo </div-->
+
+  </div>
+</ion-content>
+
+<script>
+
+   /* google.maps.event.addDomListener(window, 'load', initialize);
+    function initialize() {
+        var input = document.getElementById('lieu');
+        var options = {
+            //types: ['(cities)'],
+            componentRestrictions: {country: 'fr'}
+        };
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+        autocomplete.addListener('place_changed', function () {
+            var place = autocomplete.getPlace();
+// place variable will have all the information you are looking for.
+            console.log(place.geometry['location'].lat());
+            console.log(place.geometry['location'].lng());
+        });
+    }*/
+
+
+    function afficheFormulaire(){
+      var selectedIndex = $("#typeannonce").prop("selectedIndex");
+      var date = document.getElementById('myDate');
+      alert(selectedIndex);
+
+
+      //$( "#typeannonce" ).change(function() {
+       // var date = document.getElementById('myDate');
+       // alert(selectedIndex);
+      //})
+    }
+</script>

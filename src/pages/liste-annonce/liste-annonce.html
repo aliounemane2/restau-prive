@@ -1,0 +1,108 @@
+<!--
+  Generated template for the ListeAnnoncePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+           Restau prive
+        </ion-title>
+        <button ion-button menuToggle icon-only>
+          <ion-icon name='menu'></ion-icon>
+        </button>
+    </ion-navbar>
+</ion-header>
+ 
+<ion-content  padding>
+
+    <!--ion-item>
+        <ion-input type="text" placeholder="Rechercher un plat..." ></ion-input>
+    </ion-item-->
+     
+    
+
+
+
+    <!--div class="info infos-list"  style="margin-top: 10px;" >
+        <div class="animate-repeat1" *ngFor="let annonce of annonces" (click)="itemTapped($event, annonce)" >
+          
+            <div class="row-hopital">
+              <div class="col-34">
+
+                  <img src="https://127.0.0.1/restau-prive/web/{{annonce.image_profil.chemin}}"  class="full-image"/> 
+
+              </div>
+
+              <div class="col-12" style="padding:0 7px; margin:0">
+
+                <div class="item-text-wrap">
+                  <h4 class="texte-titre-hopi">{{annonce.name}} </h4>
+                 
+                    <b *ngIf ="annonce.type =='simple'" class="texte-titre-speci" >{{annonce.date}}, {{annonce.heure_deb}} - {{annonce.heure_fin}}</b>
+
+                    <b *ngIf ="annonce.type =='permanente'" class="texte-titre-speci" >Disponiilte permanente</b>
+
+                    <b *ngIf ="annonce.type =='emporter'" class="texte-titre-speci" >Plat a emporter</b>
+                    <br/>
+
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+
+      <ion-card *ngFor="let annonce of annonces" (click)="itemTapped($event, annonce)">
+        <img src="https://127.0.0.1/restau-prive/web/{{annonce.image_profil.chemin}}" />
+        <ion-card-content>
+          <ion-card-title>
+            {{annonce.titre}}
+            </ion-card-title>
+          <p *ngIf ="annonce.type =='simple'">
+            {{annonce.date}}, {{annonce.heure_deb}} - {{annonce.heure_fin}}            
+          </p>
+
+          <p *ngIf ="annonce.type =='permanente'">
+           Disponibilte permanente  
+          </p>
+
+          <p *ngIf ="annonce.type =='emporter'">
+           Plat a emporter  
+          </p>
+
+        </ion-card-content>
+      </ion-card-->
+      <div >
+        <h1 style="color:#ac0203;
+        margin-top:20px;
+        margin-left: 10%;
+        text-align:center">
+        {{message}}
+      </h1>
+      </div>
+      <ion-card *ngFor="let annonce of annonces" (click)="itemTapped($event, annonce, parent)">
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="{{link}}{{annonce.image_profil.chemin}}" />
+            </ion-avatar>
+            <h2>{{annonce.name}}</h2>
+            <div class="line"></div>
+            <p *ngIf ="annonce.type =='simple'">
+              {{annonce.date | date:'dd/MM/yyyy'}}
+             , {{annonce.heure_deb}} - {{annonce.heure_fin}}            
+          </p>
+          <p *ngIf ="annonce.type =='permanente'">
+           Disponibilte permanente  
+          </p>
+
+          <p *ngIf ="annonce.type =='emporter'">
+           Plat a emporter  
+          </p>
+          </ion-item>
+    </ion-card>
+</ion-content>

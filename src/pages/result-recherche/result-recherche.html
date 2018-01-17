@@ -1,0 +1,37 @@
+<!--
+  Generated template for the ResultRecherchePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ResultRecherche</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+	<ion-card *ngFor="let annonce of annonce" (click)="itemTapped($event, annonce, parent)">
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="{{link}}{{annonce.image_profil.chemin}}" />
+            </ion-avatar>
+            <h2>{{annonce.name}}</h2>
+            <div class="line"></div>
+            <p *ngIf ="annonce.type =='simple'">
+              {{annonce.date | date:'dd/MM/yyyy'}}
+             , {{annonce.heure_deb}} - {{annonce.heure_fin}}            
+          </p>
+          <p *ngIf ="annonce.type =='permanente'">
+           Disponibilte permanente  
+          </p>
+
+          <p *ngIf ="annonce.type =='emporter'">
+           Plat a emporter  
+          </p>
+          </ion-item>
+    </ion-card>
+</ion-content>

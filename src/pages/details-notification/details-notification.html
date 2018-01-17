@@ -1,0 +1,49 @@
+<!--
+  Generated template for the DetailsNotificationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>DetailsNotification</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<div class="banierehopi">
+      <a class="item-image" ng-class=""  >
+
+        <img src="https://127.0.0.1/restau-prive/web/{{notification.annonce.image_profil.chemin}}"  class="full-image"/> 
+      </a>
+    </div>
+
+    <div class="details-hopital" *ngIf ="notification.type_notif =='new_reservation'">
+  	  <b class="texte-det-four-dr">{{notification.from_user.email}} a reservé  {{ notification.reservation.nb_convives}} places pour votre plat {{notification.annonce.name}}</b><br/>
+  	  <b *ngIf ="notification.annonce.type =='simple'" class="texte-det-four-dr">Date :  {{notification.annonce.date}} </b><br/>
+
+  	  <b *ngIf ="notification.annonce.type =='simple'" class="texte-det-four-dr">Heure :  {{notification.annonce.heure_deb}} - {{notification.annonce.heure_fin}}  </b> <br/>
+  	  <b *ngIf ="notification.annonce.type =='emporter'" class="texte-det-four-dr">Plat a emporter</b>
+  	  <b *ngIf ="notification.annonce.type =='permanente'" class="texte-det-four-dr">Disponibilite permanente</b>
+  	  
+  	  <b class="texte-det-four-dr">{{notification.annonce.prix}} euros / personne</b><br/>
+      <div *ngIf ="notification.reservation.state =='validation'">
+        <button class="btnres" (click)="validerReservation()">Accepter</button>
+        <button class="btnresval" (click)="declinerReservation()">Refuser</button>
+      </div>
+    </div>
+
+  <div class="details-hopital" *ngIf ="notification.type_notif =='validation_reservation'">
+	  <b class="texte-det-four-dr">{{notification.from_user.email}} a validé votre reservation de {{ notification.reservation.nb_convives}} places pour son plat  {{notification.annonce.name}}</b><br/>
+	  <b *ngIf ="notification.annonce.type =='simple'" class="texte-det-four-dr">Date :  {{notification.annonce.date}} </b><br/>
+
+	  <b *ngIf ="notification.annonce.type =='simple'" class="texte-det-four-dr">Heure :  {{notification.annonce.heure_deb}} - {{notification.annonce.heure_fin}}  </b> <br/>
+	  <b *ngIf ="notification.annonce.type =='emporter'" class="texte-det-four-dr">Plat a emporter</b>
+	  <b *ngIf ="notification.annonce.type =='permanente'" class="texte-det-four-dr">Disponibilite permanente</b>
+	  
+	  <b class="texte-det-four-dr">{{notification.annonce.prix}} euros / personne</b><br/>
+  </div>
+</ion-content>

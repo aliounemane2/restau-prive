@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+  <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+      Restau-prive
+    </ion-title>
+    
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content  >
+  
+
+  <div class="connexion">
+    <div id="contenu-connexion">
+        <div class="connexion1">
+        	<img src="https://restau-prive.com/images/Logo_RP_blanc.png" />
+        </div>
+        <div class="publier-annonce" (click) = deposerAnnonce()>Publier une annonce</div>
+        <div class="decouvrir-restau" (click) = restauPrive()>Decouvrir restau privé</div>
+        <span clas="se-connecter" (click) = seConnecter() *ngIf ="token == null">Connecter </span>
+        <u clas="sinscrire" (click) = sInscrire() *ngIf ="token == null">S'inscrire </u>
+    </div>
+  </div>
+  
+
+  <!--ion-tabs>
+    <ion-tab [root]="rechercher" tabTitle="Rechercher"></ion-tab>
+    <ion-tab [root]="publier" tabTitle="Publier"></ion-tab>
+    <ion-tab [root]="mon_comtpe" tabTitle="Mon compte"></ion-tab>
+    <ion-tab [root]="decouvrir_rp" tabTitle="Decouvrir RP"></ion-tab>
+  </ion-tabs-->
+</ion-content>

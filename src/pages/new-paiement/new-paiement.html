@@ -1,0 +1,64 @@
+<!--
+  Generated template for the NewPaiementPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Paiement</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<div class="details-hopital" *ngIf ="parent =='newreservation'">
+  <b class="texte-det-four-dr">prix du plat</b>: {{reservation.annonce.prix}} Euros<br/>
+  <b class="texte-det-four-dr">Nombre de convives</b>: {{reservation.nb_convives}}<br/>
+  <b class="texte-det-four-dr">Montant</b>: {{montant}}<br/>
+  <b class="texte-det-four-dr">Frais</b>: {{frais}}<br/>
+  <b class="texte-det-four-dr">Total </b>: {{total}}<br/>       
+</div>
+
+<div class="details-hopital" *ngIf ="parent =='updatereservation'">
+  <div *ngIf ="paiement.nbconvives  > paiement.nombreconvives">
+    <b class="texte-det-four-dr">Vous avez diminue</b>: {{paiement.nombres_convives_diminues}} convives a votre reseravtion
+    <b class="texte-det-four-dr">Prix du plat</b>: {{paiement.prix}} - Nombres de places reserves {{paiement.$nombres_convives_diminues}} Frais: {{paiement.frais}} Total: {{paiement.montant}} € <br/>
+  </div>
+
+  <div *ngIf ="paiement.nbconvives  < paiement.nombreconvives">
+    <b class="texte-det-four-dr">Vous avez ajoute</b>: {{paiement.nombres_convives_ajoutes}} convives a votre reseravtion
+    <b class="texte-det-four-dr">Prix du plat</b>: {{paiement.prix}} - Nombres de places reserves {{paiement.$nombres_convives_ajoutes}} Frais: {{paiement.frais}} Total: {{paiement.montant}} € <br/>
+  </div>     
+</div>
+
+<form [formGroup]="myFormulaire">
+	<ion-item>
+        <ion-label floating class="labelins">Nomero de carte</ion-label>
+        <ion-input formControlName="numerocarte" type="text" class="champins"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label floating class="labelins">Date d'expiration</ion-label>
+        <ion-datetime displayFormat="MM-YYYY" pickerFormat="MM-YYYY" formControlName="dateExpire" class="champins"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+        <ion-label floating class="labelins">CVC</ion-label>
+        <ion-input formControlName="cvc" type="number" class="champins"></ion-input>
+    </ion-item>
+
+    <br/>
+      <br/>
+      <button *ngIf ="parent =='newreservation'" ion-button full color="primary" (click)="newPaiement()">Payer</button>
+      <div *ngIf ="parent =='updatereservation'">
+        <button *ngIf ="paiement.nbconvives  < paiement.nombreconvives" ion-button full color="primary" (click)="modifierPaiement()">Payer</button>
+        <button *ngIf ="paiement.nbconvives  > paiement.nombreconvives" ion-button full color="primary" (click)="rembourserPaiement()">Recevoir remboursement</button>
+      </div>
+      
+</form>
+
+</ion-content>

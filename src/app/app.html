@@ -1,0 +1,89 @@
+<!-- this menu section should hold what content and destine to where
+// at what point in time?
+// That is determined by the last line in this -->
+<!--ion-menu side="left" [content]="content">
+ 
+<The side menu title >
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+  <ion-content>
+    <ion-list>
+      <div *ngFor="let p of pages">
+        <button ion-item  (click)="openPage(p)" *ngIf ="p.visible == '1'"> 
+          <ion-icon name="{{p.icon}}"></ion-icon> {{p.title}} 
+        </button>
+
+        <button ion-item  (click)="openPage(p)" *ngIf ="p.visible == '2' && token == null "> 
+          <ion-icon name="{{p.icon}}"></ion-icon>{{p.title}} 
+        </button>
+
+        <button ion-item  (click)="openPage(p)" *ngIf ="p.visible == '0' && token != null "> 
+          <ion-icon name="{{p.icon}}"></ion-icon>{{p.title}} 
+        </button>
+
+        <div *ngFor="let sm of p.sm">
+          <button ion-item  (click)="openPage(sm)" *ngIf ="p.visible == '0' && token != null " > 
+          {{sm.title}} 
+          </button>
+        </div>
+      </div>
+      <button ion-item  (click)="logout()" *ngIf ="token != null"><ion-icon name="log-out" ></ion-icon> {{'Deconnexion'}}
+      </button>
+    
+    </ion-list>
+
+  </ion-content>
+ 
+</ion-menu-->
+
+
+
+<!--ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav-->
+<ion-menu side="left" [content]="content">
+  <ion-header>
+    <ion-navbar>
+    
+    <ion-title>
+      Menus
+    </ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+  </ion-navbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <div *ngFor="let p of pages">
+        <button ion-item  (click)="openPage(p)" *ngIf ="p.visible == '1'"> 
+          <ion-icon name="{{p.icon}}"></ion-icon> {{p.title}} 
+        </button>
+
+        <button ion-item  (click)="openPage(p)" *ngIf ="p.visible == '2' && token == null "> 
+          <ion-icon name="{{p.icon}}"></ion-icon>{{p.title}} 
+        </button>
+
+        <button ion-item  (click)="openPage(p)" *ngIf ="p.visible == '0' && token != null "> 
+          <ion-icon name="{{p.icon}}"></ion-icon>{{p.title}} 
+        </button>
+
+        <div *ngFor="let sm of p.sm">
+          <button ion-item  (click)="openPage(sm)" *ngIf ="p.visible == '0' && token != null " > 
+          {{sm.title}} 
+          </button>
+        </div>
+      </div>
+      <button ion-item  (click)="logout()" *ngIf ="token != null"><ion-icon name="log-out" ></ion-icon> {{'Deconnexion'}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav id="nav" [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+

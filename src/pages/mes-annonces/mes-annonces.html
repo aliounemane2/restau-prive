@@ -1,0 +1,71 @@
+<!--
+  Generated template for the MesAnnoncesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mes annonces</ion-title>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+  </ion-navbar>
+  
+
+</ion-header>
+
+
+<ion-content padding>
+	<div *ngIf ="menu =='Annonces à venir'">
+		<h3 style="color: #ac0203; margin-left: 10px;">Annonces à venir </h3>
+		<ion-card *ngFor="let annonce of annonces" (click)="itemTapped($event, annonce, parent)">
+				<ion-item>
+				    <ion-avatar item-start>
+				      <img src="{{link}}{{annonce.image_profil.chemin}}" />
+				    </ion-avatar>
+				    <h2>{{annonce.name}}</h2>
+				     <div class="line"></div>
+				    <p style="color: #27b062;" *ngIf ="annonce.type =='simple'"> Vous organisez cete evenement le {{annonce.date | date:'dd/MM/yyyy'}}</p>
+
+				    <p *ngIf ="annonce.type =='emporter'"> Plat est a emporter</p>
+				    <p *ngIf ="annonce.type =='permanente'"> Disponinilite permanente </p>
+	  			</ion-item>
+		</ion-card>
+	</div>
+
+	<div *ngIf ="menu =='Annonces passées'">
+		<h3 style="color: #ac0203; margin-left: 10px;">Annonces passées </h3>
+		<ion-card *ngFor="let annonce of annonces">
+				<ion-item>
+				    <ion-avatar item-start>
+				      <img src="{{link}}{{annonce.image_profil.chemin}}" />
+				    </ion-avatar>
+				    <h2>{{annonce.name}}</h2>
+				     <div class="line"></div>
+				    <p style="color: #a80000;" *ngIf ="annonce.type =='simple'">  {{annonce.date | date:'dd/MM/yyyy'}}</p>
+
+				    <p *ngIf ="annonce.type =='emporter'"> Plat est a emporter</p>
+				    <p *ngIf ="annonce.type =='permanente'"> Disponinilite permanente </p>
+	  			</ion-item>
+		</ion-card>
+	</div>
+
+	<div *ngIf ="menu =='Annonces annulées'">
+		<h3 style="color: #ac0203; margin-left: 10px;">Annonces annulées </h3>
+		<ion-card *ngFor="let annonce of annonces">
+				<ion-item>
+				    <ion-avatar item-start>
+				      <img src="{{link}}{{annonce.image_profil.chemin}}" />
+				    </ion-avatar>
+				    <h2>{{annonce.name}}</h2>
+				     <div class="line"></div>
+				    <p style="color: #a80000;" *ngIf ="annonce.type =='simple'">  {{annonce.date | date:'dd/MM/yyyy'}}</p>
+
+				    <p *ngIf ="annonce.type =='emporter'"> Plat est a emporter</p>
+				    <p *ngIf ="annonce.type =='permanente'"> Disponinilite permanente </p>
+	  			</ion-item>
+		</ion-card>
+	</div>
+</ion-content>
